@@ -1,0 +1,201 @@
+body{
+	font-family: Roboto;
+	font-size: 18px;
+	font-weight: 300;
+  font-style: normal;
+}
+
+.col-left{
+	float: left;
+}
+.col-right{
+	float: right;
+}
+.navbar-transparant{
+	background: transparent;
+	border-color: transparent;
+  padding-top: 25px;
+}
+#head-search{
+	display: none;
+}
+#home{
+	background: url('/storage/icon/background.jpg');
+	background-repeat:no-repeat;
+	background-size:contain;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 500px;
+    color: white;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#righttext-head{
+	transform: rotate(-27deg);
+}
+
+#quote-head{
+	margin-top: 100px;
+	color: #173543;
+    text-align: right;
+}
+#typing-head{
+	position: absolute;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 4px 3px 0 #ffffff, 10px 5px 0 rgba(0,0,0,0.15);
+}
+#layanan{
+	padding-top: 100px;
+  min-height: 500px;
+  background: url('/storage/icon/coba.png');
+  background-repeat:no-repeat;    
+  background-size: cover;
+  background-position: right 0px bottom 0px;
+}
+#carakerja{
+  background: #173543;
+	padding-top: 50px;
+  color: white;
+  padding-bottom: 40px;
+}
+#kelebihan{
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+#spacing{
+	padding-top: 20px
+}
+.name-selection{
+	font-weight: bold;
+	text-transform: capitalize;
+	margin-bottom: 10px;
+  font-size: 22px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#left-selector{
+	float: left;
+}
+#right-selector{
+	float: right;
+}
+.blue-dash{
+	border-top: 3px dashed #03A9F4;
+  margin-top: 21px;
+}
+.caption-layanan{
+	color: #173543;
+	position: initial;
+	text-shadow: none;
+}
+#masalah:hover{
+  color: red;
+}
+#solusi:hover{
+  color: pink;
+}
+#komunikasi:hover{
+  color:green;
+}
+#review:hover{
+  color:yellow;
+}
+
+.why-we ol {
+  color: #ccc;
+  list-style-type: none;
+}
+
+.why-we  ol li {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.why-we  li p {
+  padding-left: 60px;
+  font-family: Roboto;
+  font-size: 16px;
+  color: black;
+}
+.why-we  li h4 {
+  text-transform: uppercase;
+  padding-left: 60px;
+  color: #03A9F4;
+}
+.why-we  span {
+  position: absolute;
+  font: bold italic 60px/1.5 Roboto;
+}
+
+.why-we ol li img{
+	padding-left: 60px;
+}
+.google-maps {
+    position: relative;
+    padding-bottom: 50px; 
+    height: 100%;
+    overflow: hidden;
+}
+.body-background{
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+.menu-navbar{
+  height: 50px;
+  background: #173543;
+  color: white;
+}
+.navbar-transparant .navbar-nav>li>a {
+  color: white;
+  font-size:15px;
+  text-transform: capitalize;
+}
+.navbar-transparant .navbar-nav>li>a:focus,
+.navbar-transparant .navbar-nav>li>a:hover{
+  background: white;
+  border-bottom: 5px solid #03A9F4;
+}
+
+.menu-navbar:before{
+  background: #0292d5;
+  border-bottom: 50px solid transparent;
+  border-right: 43px solid #173543;
+  float: left;
+}
+
+#space{
+  height: 50px;
+  transform: rotate(2deg);
+  background: #FFEB3B;
+  margin-top: -25px;
+  z-index: 1;
+  position: relative;
+
+}
+.centered{
+  text-align: center;
+}
+#footer{
+  background: #173543;
+  color:white;
+  padding: 30px;
+  font-size: 15px;
+}
+#kontak-right{
+  background: #173543;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
