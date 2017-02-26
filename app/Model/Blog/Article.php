@@ -6,9 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Blog\Tag;
 use App\Model\Blog\Category;
 use App\User;
+use DB;
 
 class Article extends Model
 {
+    protected $fillable = [
+        'user_id','title', 'keyword', 'description', 'slug',  'content', 'viewCount', 'status', 'created_at', 'updated_at', 'deleted_at', 'header',
+    ];
+
+    
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+
     public function tags(){
     	return $this->belongsToMany(Tag::class);
     }
@@ -61,5 +72,24 @@ class Article extends Model
         return $query
             ->join('article_tag', 'article_tag.article_id', 'articles.id')
             ->where('article_tag.tag_id', $id);
+    }
+
+    /*admin*/
+
+    public function scopeGetSumArticle($query){
+        return $query
+            ->select(DB::raw('count(id) as countArticle, max(created_at) as created_at'))
+            ->get();
+    }
+    public function scopeGetSumArticleByStatus($query, $status){
+        return $query
+            ->where('status', $status)
+            ->select(DB::raw('count(id) as countArticle, max(created_at) as created_at'))
+            ->get();
+    }
+
+    public function scopeGetById($query, $id){
+        return $query
+            ->where('id', $id);
     }
 }

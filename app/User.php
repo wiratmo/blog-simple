@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Article;
+use DB;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,26 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function scopeIsContributorBlog($query){
+        return $query
+            ->where('role_id', '1')
+            ->get();
+    }
+
+    public function scopeIsAdminBlog($query){
+        return $query
+            ->where('role_id', '2')
+            ->get();
+    }
+
     public function article(){
         return $this->hasOne(Article::class);
+    }
+
+    public function scopeGetSumContributor($query){
+        return $query
+            ->where('role_id', '1')
+            ->select(DB::raw('count(id) as countUser, max(created_at) as created_at'))
+            ->get();
     }
 }

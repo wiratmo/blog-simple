@@ -58,5 +58,7 @@ class Kernel extends HttpKernel
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'unauthorized'  => \App\Http\Middleware\UnauthorizedUser::class,
         'check'         => \App\Http\Middleware\CheckingUser::class,
+        'adminBlog'         => \App\Http\Middleware\IsAdminBlog::class,
+        'contributorBlog' => \App\Http\Middleware\IsContributorBlog::class,
     ];
 }

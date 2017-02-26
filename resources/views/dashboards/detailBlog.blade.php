@@ -5,7 +5,7 @@
 @section('body')
 	@foreach($article as $a)
 		<div class="wrapper-parallax">
-		    <header style="background: url('{{url('/storage/image/'.$a->header)}}')">
+		    <header style="background: url('{{url('/storage/image/header-blog/'.$a->header)}}')">
 		    
 		    </header>
 		    @include('layouts.guest.navigator_blog')

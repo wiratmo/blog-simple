@@ -126,6 +126,9 @@ body {
 .article{
   font-family: Roboto;
 }
+.article-properties{
+  font-size: 10px;
+}
 .article-content{
   font-size: 16px;
 }

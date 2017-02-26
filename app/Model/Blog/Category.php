@@ -9,6 +9,12 @@ use DB;
 
 class Category extends Model
 {
+    public $timestamps = false;
+    
+    protected $fillable = [
+        'user_id','title', 'keyword', 'description','slug', 'deleted_at', 'importent',
+    ];
+
     public function articles(){
     	return $this->belongsToMany(Article::class);
     }
@@ -39,5 +45,20 @@ class Category extends Model
             ->select('categories.*', DB::raw('count(articles.id) as countArticle'))
             ->groupBy('categories.id','categories.user_id','categories.title', 'categories.keyword', 'categories.description', 'categories.slug', 'categories.deleted_at', 'categories.importent')
             ->get();
+    }
+
+    public function scopeGetSumCategory($query){
+        return $query->count();
+    }
+
+    public function scopeGetSelect2($query){
+        return $query
+            ->select('id', 'title as text')
+            ->get();
+    }
+
+    public function scopeGetById($query, $id){
+        return $query
+            ->where('id', $id);
     }
 }

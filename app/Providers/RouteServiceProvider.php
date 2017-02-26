@@ -36,6 +36,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+        $this->mapContributorBlogRoutes();
+        $this->mapAdminBlogRoutes();
         $this->mapWebRoutes();
         $this->mapBlogRoutes();
 
@@ -62,6 +64,22 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/blog.php'));
+    }
+
+    protected function mapAdminBlogRoutes()
+    {
+        Route::prefix('blog/admin')
+             ->middleware(['web','adminBlog'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/auth/adminBlog.php'));
+    }
+
+    protected function mapContributorBlogRoutes()
+    {
+        Route::prefix('blog/contributor')
+             ->middleware(['web','contributorBlog'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/auth/contributorBlog.php'));
     }
     /**
      * Define the "api" routes for the application.

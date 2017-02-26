@@ -45,7 +45,7 @@
 		</span>
 	</div>
 	<div class="article-content">
-		<img src="{{url('storage/image/'.$article->header)}}" class="img img-responsive">
+		<img src="{{url('storage/image/header-blog/'.$article->header)}}" class="img img-responsive">
 			{{$article->description}}
 	</div>
 @endif

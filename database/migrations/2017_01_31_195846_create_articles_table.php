@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title', 50)->nullable();
+            $table->string('title', 50)->nullable()->unique();
             $table->string('keyword')->nullable();
             $table->string('description')->nullable();
             $table->string('slug', 50)->unique();
@@ -28,7 +28,6 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unique(['slug', 'monthYear']);
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
