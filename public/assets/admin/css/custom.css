@@ -4015,3 +4015,12 @@ ul.notifications {
 .tableDatatables{
   color: black;
 }
+.flex-panel{
+  height: 100%;
+}
+.google-maps {
+    position: relative;
+    padding-bottom: 50px; 
+    height: 100%;
+    overflow: hidden;
+}

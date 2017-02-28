@@ -29,8 +29,8 @@ class AdminController extends Controller
         $data['countArticle'] = Article::getSumArticle()->first();
         $data['countArticleDraf'] = Article::getSumArticleByStatus('draf')->first();
         $data['countArticlePosted'] = Article::getSumArticleByStatus('posted')->first();
-        $data['countCategory'] = Category::getSumCategory();
-        $data['countTag'] = Tag::getSumTag();
+        $data['countCategory'] = Category::getSumCategory()->count();
+        $data['countTag'] = Tag::getSumTag()->count();
         $data['countContributor'] = User::getSumContributor()->first();
         
         return view('auth.admin.blog.beranda', $data);

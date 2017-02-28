@@ -29,7 +29,10 @@ class RedirectIfAuthenticated
                 } else if (Auth::user()->role_id == 2){
                     //adminblog
                     return redirect('/blog/admin');
-                } else {
+                } else if (Auth::user()->role_id ==3){
+                    return redirect('/admin');
+                }
+                else {
                     Auth::logout();
                     return redirect('/login');
                 }

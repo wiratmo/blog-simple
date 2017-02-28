@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img alt="Brand" src="{{url('storage/icon/kaatas.png')}}">
+        <img alt="Brand" src="{{url('storage/icon/'.$dashboard->headIcon)}}">
       </a>
     </div>
 

@@ -18,22 +18,24 @@ class CreateDashboardsTables extends Migration
             $table->string('favicon')->nullable();
             $table->string('headIcon')->nullable();
             $table->string('headQuote')->nullable();
-            $table->string('title');
-            $table->string('keyword');
-            $table->string('description');
-            $table->integer('viewCounr');
-            $table->string('lastIp');
-            $table->dateTime('lastview');
-            $table->string('typingTextHead');
-            $table->string('map');
+            $table->string('title')->nullable();
+            $table->string('keyword')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('viewCount')->nullable();
+            $table->string('lastIp')->nullable();
+            $table->dateTime('lastview')->nullable();
+            $table->string('typingTextHead')->nullable();
+            $table->longText('map')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
 
         Schema::create('services', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->longText('description');
-            $table->string('picture');
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('picture')->nullable();
+            $table->string('alt')->nullable();
             $table->enum('type',['services','work','superiority']);
             $table->enum('active',['yes','no'])->default('no');
         });

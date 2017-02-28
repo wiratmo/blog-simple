@@ -17,7 +17,7 @@ class IsContributorBlog
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->isContributorBlog()){
+            if((Auth::user()->isContributorBlog(Auth::user()->id))->count()){
                 return $next($request);
             }
             return redirect('/login');

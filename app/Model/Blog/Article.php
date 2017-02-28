@@ -92,4 +92,11 @@ class Article extends Model
         return $query
             ->where('id', $id);
     }
+
+    public function scopeGetArticleByUser($query, $user){
+        return $query
+            ->join('users','users.id','articles.user_id')
+            ->select('articles.*')
+            ->where('users.name',$user);
+    }
 }

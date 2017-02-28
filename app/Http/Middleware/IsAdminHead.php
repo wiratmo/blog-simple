@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class IsAdminBlog
+class IsAdminHead
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class IsAdminBlog
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            if(((Auth::user()->isAdminBlog(Auth::user()->id))->count()) || ((Auth::user()->isAdminHead(Auth::user()->id))->count()) ){
+            if((Auth::user()->isAdminHead(Auth::user()->id))->count()){
                 return $next($request);
             }
             return redirect('/login');

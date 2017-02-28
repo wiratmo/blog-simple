@@ -2,7 +2,6 @@
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{url('/assets/device-mockups/device-mockups.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('/assets/kaatas.css')}}">
-<link rel="stylesheet" type="text/css" href="{{url('assets/aos/dist/aos.css')}}">
 <style type="text/css">
   body{
     background: url(/storage/icon/pattern.png) repeat;
@@ -16,11 +15,11 @@
 		@include('layouts.guest.navigator')
 			<div class="col-md-4 col-right" >
 			<h2>
-            	<a href="{{url('/')}}" class="typewrite" data-period="2000" data-type='["Wujudkan Ide Briliant Anda","Ceritakan Ide Anda Kepada Dunia","Maksimalkan Ide Anda"]' id="typing-head">
+            	<a href="{{url('/')}}" class="typewrite" data-period="2000" data-type='[{!! $dashboard->typingTextHead !!}]' id="typing-head">
              		<span class="wrap"></span>
              	</a>
              </h2>
-             <h3 id="quote-head">" Kami percaya bahwa teknologi akan bertampak besar untuk kemajuan bisnis dan pribadi anda "</h3>
+             <h3 id="quote-head">" {!! $dashboard->headQuote !!} "</h3>
 			</div>
 
     </div>
@@ -28,50 +27,44 @@
 
   <section id="layanan" >
     <div class="container">
-    <h4 id="right-selector" class="name-selection" >apa yang kami kerjakan</h4>
+    <h4 id="right-selector" class="name-selection">apa yang kami kerjakan</h4>
     <hr class="blue-dash">
     <div class="row">
       <div class="col-md-8">
          <div id="carousel-a" class="carousel slide carousel-sync laptop" data-ride="carousel" data-pause="false">
               <div class="carousel-inner" role="listbox" >
-                <div class="item active">
+              @foreach($services as $service)
+                 @if ($loop->first)
+                  <div class="item active">
+                @else
+                  <div class="item">
+                @endif
                   <div class="carousel-caption caption-layanan">
-                      <h3 >Pembuatan Website</h3>
-                      <p><b>Percayakan kepada kami </b> ide anda dan akan <b>kami realisasikan</b> dalam bentuk website. Mari kita <b>kenalkan ide anda</b> kepada dunia dan berikan ruang dunia untuk mengenal kualitas anda. Website meliputi blog, situs berita, company profile, toko online, ataupun desain website</p>
+                      <h3>{{$service->title}}</h3>
+                      {!! $service->description !!}
                     </div>
                 </div>
-                <div class="item">
-                  <div class="carousel-caption caption-layanan">
-                      <h3>Pembuatan Aplikasi</h3>
-                      <p>Bekerja sekarng dituntut <b>lebih terbuka dan lebih cepat</b>. Mari <b>kita percepat perkembangan </b>bisnis anda dengan menggunakan<b> aplikasi</b>. Aplikasi yang kami buat dapat berbentuk <b>website, desktop atau android</b> yang meliputi Aplikasi administrasi, GIS untuk pemetaan wilayah, ataupuna apliksai akuntansi</p>
-                    </div>
-                </div>
-                <div class="item">
-                  <div class="carousel-caption caption-layanan">
-                      <h2>Pembantu Teknis</h2>
-                      <p><b>Optimalkan insfrastruktur </b> anda sehingga bisnis anda dapat berjalan<b> lebih baik dan cepat</b> , layanan kami meliputi <b>pemeliharaan website, pemeliharaan aplikasi open source, penyiapan jaringan local area, dan sebagainya</b></p>
-                    </div>
-                </div>
+                @endforeach
               </div>
             </div>
       </div>
 
       <div class="col-md-4">
-        <div class="device-mockup macbook portrait black">
+        <div class="device-mockup macbook_2015 silver portrait black">
                 <div class="device">
                     <div class="screen">
                         <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
                         <div id="carousel-b" class="carousel slide carousel-sync laptop" data-ride="carousel" data-pause="false">
                           <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                              <img src="{{url('storage/icon/webdev.jpg')}}" alt="Jasa Pembuatan Website dan aplikasi berbasis web" class="img img-responsive">
+                            @foreach($services as $service)
+                              @if ($loop->first)
+                                <div class="item active">
+                              @else
+                                <div class="item">
+                              @endif
+                              <img src="{{url('storage/icon/'.$service->picture)}}" alt="{{$service->alt}}" class="img img-responsive">
                             </div>
-                            <div class="item">
-                              <img src="{{url('storage/icon/mobile.jpg')}}" alt="Jasa Pembuatan Aplikasi Android" class="img img-responsive">
-                            </div>
-                            <div class="item">
-                              <img src="{{url('storage/icon/it-support.jpg')}}" alt="Jasa Perawatan IT" class="img img-responsive">
-                            </div>
+                            @endforeach
                           </div>
                         </div>            
                     </div>
@@ -84,44 +77,21 @@
     </div>
     </div>
   </section>
-
+<section id="spacereserve"> </section>
   <section id="carakerja">
     <div class="container">
-    <h4 id="left-selector" class="name-selection" >apa yang kami kerjakan</h4>
+    <h4 id="left-selector" class="name-selection">Cara Kerja Kami</h4>
     <hr class="blue-dash" id="spacing">
       <div class="row">
+        @foreach($works as $work)
         <div class="col-md-3  carakerja">
-            <div class="centered" id="masalah" >
-              <i class="fa fa-wpexplorer fa-5x"></i>
+            <div class="centered">
+              <img src="{{url('/storage/icon/'.$work->picture)}}">
             </div>
-            <h4 style=" text-align: left; color: #03A9F4;text-align: center">Masalah<br></h4>
-            <p>Perkembangan yang semakin cepat. Oleh karena itu optimalkan bisnis anda dengan teknologi. <b>Kami bertekad untuk mememukan akar masalah terhadap yang anda alami</b>, kami tidak akan berhenti dalam mencari pokok permasalahan tersebut </p>
+            <h4 style=" text-align: left; color: #03A9F4;text-align: center">{{$work->title}}<br></h4>
+            {!! $work->description !!}
           </div>
-          <div class="col-md-3 carakerja">
-            <div class="centered" id="solusi" >
-              <i class="fa fa-heart-o fa-5x"></i>
-            </div>
-            <h4 style=" text-align: left; color: #03A9F4;text-align: center">Solusi<br></h4>
-            <p>Apapun permasalahan anda pasti ada solusi atau pemecahan masalah. <b>Kami berkomitmen akan menemukan solusi dari akar masalah yang anda alami</b></p>
-          </div>
-          <div class="col-md-3 carakerja">
-            <div class="centered"  id="komunikasi" >
-              <i class="fa fa-podcast fa-5x"></i>
-            </div>
-            <h4 style=" text-align: left; color: #03A9F4;text-align: center">Komunikasi<br></h4>
-            <p>
-              Kerja kami kerja yang berkesinambungan dan tidak menyampingkan anda dan membuat solusi beradasarkan anggapan kami. <b>Kami pasti selalu melibatkan anda dalam apa yang kami kerjakan</b> untuk menemukan solusi bagi anda sehingga solusinya lebih mengena ke anda 
-            </p>
-          </div>
-          <div class="col-md-3 carakerja">
-            <div class="centered"  id="review" >
-              <i class="fa fa-spinner fa-5x"></i>
-            </div>
-            <h4 style=" text-align: left; color: #03A9F4;text-align: center">Evaluasi<br></h4>
-            <p>
-              Setelah diadakan komunikasi dengan anda , <b>kami akan melalukan review atas solusi yang kami buat dan membuat pembaharuan </b> dari apa yang anda rasa belum cocok.
-            </p>
-          </div>
+          @endforeach
       </div>
     </div>
   </section>
@@ -130,56 +100,39 @@
     <div class="container why-we">
     <h4 class="name-selection" style="text-align: center;" >kelebihan kami</h4>
       <ol>
-              <li>
-                  <span>1.</span>
-                  <div class="row" id="whyone" >
-                    <div class="col-md-8">
-                    <h4>Keamanan Data Lebih Terjamin</h4>
-                    <p>Keamanan data menjadi faktor penting dalam dunia digital seperti sekarang. Menanggulangi kebocoran informasi pentik dari anda kami berkomitmen untuk memprioritaskan keamanan data anda dalam aplikasi yang kami buat</p>  
-                  </div>
-                  <div class="col-md-3">
-                    <img src="{{url('/storage/icon/security.png')}}" class="img img-responsive">
-                  </div>
-                  </div>                  
-              </li>
-              <li>
-                  <span>2.</span>
-                  <div class="row" id="whytwo" >
-                  <div class="col-md-3">
-                    <img src="{{url('/storage/icon/development.png')}}" class="img img-responsive">
-                  </div>
-                    <div class="col-md-8">
-                    <h4>Mudah Dalam Pengembangan</h4>
-                    <p><b>Kemudahan yang kami tawarkan.</b> Aplikasi yang kami buat dapat mudah dalam pengembangan jika terjadi perubahan atau penambahan sehingga tidak terlalu menganggu anda dan bisnis anda</p>  
-                  </div>
-                  </div>                  
-              </li>
-              <li>
-                  <span>3.</span>
-                  <div class="row" id="whythree" >
-                    <div class="col-md-8">
-                    <h4>Desain Responsive</h4>
-                    <p>Kami selalu <i>mereview</i> teknologi apa yang sedang berkembang. Sekarang banyak yang menggunakan <i>smartphone</i> dalam kehidupan sehari hari. Untuk mengoptimalkan kerja anda dan bisnis anda kami membuat aplikasi yang baik dibuka dari semua perangkat</p>  
-                  </div>
-                  <div class="col-md-3">
-                    <img src="{{url('/storage/icon/responsive.png')}}" class="img img-responsive">
-                  </div>
-                  </div>                  
-              </li>
-              <li>
-                  <span>4.</span>
-                  <div class="row" id="whyfour" >
-                  <div class="col-md-3">
-                    <img src="{{url('/storage/icon/payment.png')}}" class="img img-responsive">
-                  </div>
-                    <div class="col-md-8">
-                    <h4>Pembayaran</h4>
-                    <p>
-                      Setiap orang pasti menginginkan pembaharuan. Oleh karenanya kami menawarkan kemudahan itu lagi dalam bagian pembayaran
-                    </p>  
-                  </div>
-                  </div>                  
-              </li>
+          @foreach($superiorities as $key => $superiority)
+              @php
+                $number = rand(1,2);
+              @endphp
+              @if($number == 1)
+                <li>
+                    <span>{{$key+1}}.</span>
+                    <div class="row" id="whyone" >
+                      <div class="col-md-8">
+                      <h4>{{$superiority->title}}</h4>
+                      {!! $superiority->description !!}
+                    </div>
+                    <div class="col-md-3">
+                      <img src="{{url('/storage/icon/'.$superiority->picture)}}" class="img img-responsive">
+                    </div>
+                    </div>                  
+                </li>
+              @elseif($number == 2)
+                <li>
+                    <span>{{$key+1}}.</span>
+                    <div class="row" id="whyone" >
+                      <div class="col-md-3">
+                        <img src="{{url('/storage/icon/'.$superiority->picture)}}" class="img img-responsive">
+                      </div>
+                      <div class="col-md-8">
+                        <h4>{{$superiority->title}}</h4>
+                        {!! $superiority->description !!}
+                      </div>
+                    </div>                  
+                </li>
+              @endif
+              
+            @endforeach
           </ol> 
     </div>
   </section>
@@ -234,7 +187,6 @@
 </section>
 @endsection
 @push('script')
-<script type="text/javascript" src="{{url('assets/aos/dist/aos.js')}}"></script>
 <script type="text/javascript" src="{{url('assets/typing.js')}}"></script>
 <script type="text/javascript" src="{{url('assets/jquery.nav.js')}}"></script>
 <script type="text/javascript">

@@ -33,7 +33,17 @@
       <ul class="nav side-menu">
         <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="{{url('/blog/admin/')}}">Blog</a></li>
+            @if((Auth::user()->isAdminHead(Auth::user()->id))->count())
+            <li><a><i class="fa fa-rocket"></i> DashBoard Kaatas<span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="{{url('/admin/home')}}">Home</a>
+                </li>
+                <li><a href="{{url('/admin/services')}}">Services</a>
+                </li>
+              </ul>
+            </li>
+            @endif
+            <li><a href="{{url('/blog/admin/')}}"><i class="fa fa-newspaper-o"></i>Blog</a></li>
           </ul>
         </li>
         <li><a><i class="fa fa-pencil-square-o"></i> Manage <span class="fa fa-chevron-down"></span></a>

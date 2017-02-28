@@ -30,15 +30,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function scopeIsContributorBlog($query){
+    public function scopeIsContributorBlog($query, $id){
         return $query
+            ->where('id', $id)
             ->where('role_id', '1')
             ->get();
     }
 
-    public function scopeIsAdminBlog($query){
+    public function scopeIsAdminBlog($query, $id){
         return $query
+            ->where('id', $id)
             ->where('role_id', '2')
+            ->get();
+    }
+
+    public function scopeIsAdminHead($query, $id){
+        return $query
+            ->where('id', $id)
+            ->where('role_id', '3')
             ->get();
     }
 

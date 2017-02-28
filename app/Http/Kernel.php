@@ -50,15 +50,16 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'          => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can'           => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'unauthorized'  => \App\Http\Middleware\UnauthorizedUser::class,
-        'check'         => \App\Http\Middleware\CheckingUser::class,
+        'auth'              => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'        => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'          => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'               => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'             => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'          => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'unauthorized'      => \App\Http\Middleware\UnauthorizedUser::class,
+        'check'             => \App\Http\Middleware\CheckingUser::class,
+        'adminHead'         => \App\Http\Middleware\IsAdminHead::class,
         'adminBlog'         => \App\Http\Middleware\IsAdminBlog::class,
-        'contributorBlog' => \App\Http\Middleware\IsContributorBlog::class,
+        'contributorBlog'   => \App\Http\Middleware\IsContributorBlog::class,
     ];
 }
