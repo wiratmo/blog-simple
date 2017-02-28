@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('keyword')->nullable();
             $table->string('description')->nullable();
             $table->string('slug', 50)->unique();
-            $table->string('monthYear', 10);
+            $table->string('monthYear', 10)->nullable();
             $table->string('header')->nullable();
             $table->longText('content');
             $table->integer('viewCount')->default(0);

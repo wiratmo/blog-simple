@@ -108,11 +108,11 @@
                 <li>
                     <span>{{$key+1}}.</span>
                     <div class="row" id="whyone" >
-                      <div class="col-md-8">
+                      <div class="col-md-10">
                       <h4>{{$superiority->title}}</h4>
                       {!! $superiority->description !!}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                       <img src="{{url('/storage/icon/'.$superiority->picture)}}" class="img img-responsive">
                     </div>
                     </div>                  
@@ -121,10 +121,10 @@
                 <li>
                     <span>{{$key+1}}.</span>
                     <div class="row" id="whyone" >
-                      <div class="col-md-3">
+                      <div class="col-md-2">
                         <img src="{{url('/storage/icon/'.$superiority->picture)}}" class="img img-responsive">
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-md-10">
                         <h4>{{$superiority->title}}</h4>
                         {!! $superiority->description !!}
                       </div>

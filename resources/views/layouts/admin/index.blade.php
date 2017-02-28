@@ -45,48 +45,23 @@ Development by <a href="{{url('/')}}">Kaatas </a>
 <div class="clearfix"></div>
 </footer>
 <script type="text/javascript" src="{{url('/assets/jquery/dist/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/jquery/dist/jquery.summernote.js')}}"></script>
 <script type="text/javascript" src="{{url('/assets/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{url('assets/summernote/summernote.js')}}"></script>
-<script type="text/javascript" src="{{url('assets/summernote/plugin/uploadcare/uploadcare.js')}}"></script>
 <script type="text/javascript" src="{{url('/assets/fastclick/lib/fastclick.js')}}"></script>
 <!-- <script type="text/javascript" src="{{url('/assets/nprogress/nprogress.js')}}"></script> -->
 <script type="text/javascript" src="{{url('/assets/admin/js/custom.js')}}"></script>
-<script type="text/javascript">
-	$(function() {
-          $('#summernote').summernote({
-            // unfortunately you can only rewrite
-            // all the toolbar contents, on the bright side
-            // you can place uploadcare button wherever you want
-            height: 350,
-            toolbar: [
-              ['uploadcare', ['uploadcare']], // here, for example
-              ['style', ['style']],
-              ['font', ['bold', 'italic', 'underline', 'clear']],
-              ['fontname', ['fontname']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['height', ['height']],
-              ['table', ['table']],
-              ['insert', ['media', 'link', 'hr']],
-              ['view', ['fullscreen', 'codeview']]
-            ],
-            uploadcare: {
-              // button name (default is Uploadcare)
-              buttonLabel: 'Image / file',
-              // font-awesome icon name (you need to include font awesome on the page)
-              buttonIcon: 'picture-o',
-              // text which will be shown in button tooltip
-              tooltipText: 'Upload files or video or something',
-
-              // uploadcare widget options,
-              // see https://uploadcare.com/documentation/widget/#configuration
-              publicKey: 'c6812da86a365fbaeb98', // set your API key
-              crop: 'free',
-              tabs: 'all',
-              multiple: true
-            }
-          });
-        });
-</script>
+<script type="text/javascript">               
+  <!--
+  
+  $(document).ready(function() {
+    
+    $('.summernote').summernote({
+        height: 350
+    });
+  });
+  
+  //-->
+  </script>
 @stack('script')
 </html>
